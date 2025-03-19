@@ -89,19 +89,6 @@ const Footer = () => {
           <p className="text-gray-400 text-sm text-center">
             © {new Date().getFullYear()} شركة البدر الدولية التجارية. جميع الحقوق محفوظة
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mt-3">
-            <p className="text-sm">
-              تم التصميم والتطوير بواسطة{" "}
-              <span className="font-semibold">Mazen Sharaf Aldeen</span>
-            </p>
-            <a
-              href="mailto:mazen1221cool@gmail.com"
-              className="flex items-center gap-1 text-primary hover:underline font-medium"
-            >
-              <Mail className="h-4 w-4" />
-              <span>mazen1221cool@gmail.com</span>
-            </a>
-          </div>
         </div>
       </div>
     </footer>
