@@ -8,9 +8,8 @@ import AnimatedSection from '../components/AnimatedSection';
 import { Product } from '../components/ProductCard';
 import { toast } from 'sonner';
 
-// Import product data from the existing Products page
-// In a real application, this would come from an API or database
-import { allProducts, categories } from './Products';
+// Import product data from the data file instead of Products page
+import { allProducts, categories } from '../data/products';
 
 const ProductManagement = () => {
   const { id } = useParams();
