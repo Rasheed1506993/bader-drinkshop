@@ -1,23 +1,21 @@
 import { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, Search, LogIn } from 'lucide-react';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { Menu, X, Search, LogIn, LogOut } from 'lucide-react';
 import ProductSearch from './ProductSearch';
+import { useAuth } from '../contexts/AuthContext';
+import { toast } from 'sonner';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const { isAuthenticated, logout } = useAuth();
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -27,11 +25,14 @@ const Header = () => {
     setShowSearch(false);
   }, [location]);
 
+  const handleLogout = () => {
+    logout();
+    toast.success('تم تسجيل الخروج');
+    navigate('/');
+  };
+
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 px-6 md:px-10 
-      ${isScrolled ? 'glass-effect shadow-sm' : 'bg-transparent'}`}
-    >
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 px-6 md:px-10 ${isScrolled ? 'glass-effect shadow-sm' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <NavLink to="/" className="flex items-center space-x-2 rtl:space-x-reverse">
           <img 
@@ -43,88 +44,34 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
-          <NavLink 
-            to="/" 
-            className={({ isActive }) => 
-              `text-badr-black hover:text-badr-gold transition-colors duration-300 
-              ${isActive ? 'font-semibold text-badr-gold' : 'font-medium'}`
-            }
-          >
-            الرئيسية
-          </NavLink>
-          <NavLink 
-            to="/products" 
-            className={({ isActive }) => 
-              `text-badr-black hover:text-badr-gold transition-colors duration-300 
-              ${isActive ? 'font-semibold text-badr-gold' : 'font-medium'}`
-            }
-          >
-            المنتجات
-          </NavLink>
-          <NavLink 
-            to="/about" 
-            className={({ isActive }) => 
-              `text-badr-black hover:text-badr-gold transition-colors duration-300 
-              ${isActive ? 'font-semibold text-badr-gold' : 'font-medium'}`
-            }
-          >
-            من نحن
-          </NavLink>
-          <NavLink 
-            to="/contact" 
-            className={({ isActive }) => 
-              `text-badr-black hover:text-badr-gold transition-colors duration-300 
-              ${isActive ? 'font-semibold text-badr-gold' : 'font-medium'}`
-            }
-          >
-            اتصل بنا
-          </NavLink>
+          <NavLink to="/" className={({ isActive }) => `text-badr-black hover:text-badr-gold transition-colors duration-300 ${isActive ? 'font-semibold text-badr-gold' : 'font-medium'}`}>الرئيسية</NavLink>
+          <NavLink to="/products" className={({ isActive }) => `text-badr-black hover:text-badr-gold transition-colors duration-300 ${isActive ? 'font-semibold text-badr-gold' : 'font-medium'}`}>المنتجات</NavLink>
+          <NavLink to="/about" className={({ isActive }) => `text-badr-black hover:text-badr-gold transition-colors duration-300 ${isActive ? 'font-semibold text-badr-gold' : 'font-medium'}`}>من نحن</NavLink>
+          <NavLink to="/contact" className={({ isActive }) => `text-badr-black hover:text-badr-gold transition-colors duration-300 ${isActive ? 'font-semibold text-badr-gold' : 'font-medium'}`}>اتصل بنا</NavLink>
 
-          {/* زر البحث */}
-          <button 
-            onClick={() => setShowSearch(!showSearch)}
-            className="text-badr-black hover:text-badr-gold transition-colors duration-300"
-            aria-label="بحث"
-          >
+          {/* Search Icon */}
+          <button onClick={() => setShowSearch(!showSearch)} className="text-badr-black hover:text-badr-gold transition-colors duration-300" aria-label="بحث">
             <Search size={20} />
           </button>
 
-          {/* زر تسجيل الدخول كأيقونة */}
-          <NavLink 
-            to="/login" 
-            className="text-badr-black hover:text-badr-gold transition-colors duration-300"
-            aria-label="تسجيل الدخول"
-          >
-            <LogIn size={20} />
-          </NavLink>
+          {/* Login / Logout Icon */}
+          {!isAuthenticated ? (
+            <NavLink to="/login" className="text-badr-black hover:text-badr-gold transition-colors duration-300" aria-label="تسجيل الدخول">
+              <LogIn size={22} />
+            </NavLink>
+          ) : (
+            <button onClick={handleLogout} className="text-badr-black hover:text-badr-gold transition-colors duration-300" aria-label="تسجيل الخروج">
+              <LogOut size={22} />
+            </button>
+          )}
         </nav>
 
         {/* Mobile Navigation */}
         <div className="flex items-center md:hidden">
-          {/* زر البحث للموبايل */}
-          <button 
-            onClick={() => setShowSearch(!showSearch)}
-            className="mr-4 text-badr-black hover:text-badr-gold transition-colors duration-300"
-            aria-label="بحث"
-          >
+          <button onClick={() => setShowSearch(!showSearch)} className="mr-4 text-badr-black hover:text-badr-gold transition-colors duration-300" aria-label="بحث">
             <Search size={20} />
           </button>
-
-          {/* زر تسجيل الدخول للموبايل */}
-          <NavLink 
-            to="/login" 
-            className="mr-4 text-badr-black hover:text-badr-gold transition-colors duration-300"
-            aria-label="تسجيل الدخول"
-          >
-            <LogIn size={20} />
-          </NavLink>
-
-          {/* زر القائمة */}
-          <button 
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-badr-black hover:text-badr-gold transition-colors duration-300"
-            aria-label={isMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
-          >
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-badr-black hover:text-badr-gold transition-colors duration-300" aria-label={isMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -134,42 +81,21 @@ const Header = () => {
       {isMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 glass-effect animate-slide-up py-4 px-6 shadow-md">
           <nav className="flex flex-col space-y-4 items-end dir-rtl">
-            <NavLink 
-              to="/" 
-              className={({ isActive }) => 
-                `text-badr-black hover:text-badr-gold transition-colors duration-300 
-                ${isActive ? 'font-semibold text-badr-gold' : 'font-medium'}`
-              }
-            >
-              الرئيسية
-            </NavLink>
-            <NavLink 
-              to="/products" 
-              className={({ isActive }) => 
-                `text-badr-black hover:text-badr-gold transition-colors duration-300 
-                ${isActive ? 'font-semibold text-badr-gold' : 'font-medium'}`
-              }
-            >
-              المنتجات
-            </NavLink>
-            <NavLink 
-              to="/about" 
-              className={({ isActive }) => 
-                `text-badr-black hover:text-badr-gold transition-colors duration-300 
-                ${isActive ? 'font-semibold text-badr-gold' : 'font-medium'}`
-              }
-            >
-              من نحن
-            </NavLink>
-            <NavLink 
-              to="/contact" 
-              className={({ isActive }) => 
-                `text-badr-black hover:text-badr-gold transition-colors duration-300 
-                ${isActive ? 'font-semibold text-badr-gold' : 'font-medium'}`
-              }
-            >
-              اتصل بنا
-            </NavLink>
+            <NavLink to="/" className={({ isActive }) => `text-badr-black hover:text-badr-gold transition-colors duration-300 ${isActive ? 'font-semibold text-badr-gold' : 'font-medium'}`}>الرئيسية</NavLink>
+            <NavLink to="/products" className={({ isActive }) => `text-badr-black hover:text-badr-gold transition-colors duration-300 ${isActive ? 'font-semibold text-badr-gold' : 'font-medium'}`}>المنتجات</NavLink>
+            <NavLink to="/about" className={({ isActive }) => `text-badr-black hover:text-badr-gold transition-colors duration-300 ${isActive ? 'font-semibold text-badr-gold' : 'font-medium'}`}>من نحن</NavLink>
+            <NavLink to="/contact" className={({ isActive }) => `text-badr-black hover:text-badr-gold transition-colors duration-300 ${isActive ? 'font-semibold text-badr-gold' : 'font-medium'}`}>اتصل بنا</NavLink>
+
+            {/* Login / Logout Icon in Mobile */}
+            {!isAuthenticated ? (
+              <NavLink to="/login" className="text-badr-black hover:text-badr-gold transition-colors duration-300" aria-label="تسجيل الدخول">
+                <LogIn size={22} />
+              </NavLink>
+            ) : (
+              <button onClick={handleLogout} className="text-badr-black hover:text-badr-gold transition-colors duration-300" aria-label="تسجيل الخروج">
+                <LogOut size={22} />
+              </button>
+            )}
           </nav>
         </div>
       )}
