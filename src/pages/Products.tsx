@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ProductList from '../components/ProductList';
@@ -7,14 +6,14 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProductSearch from '../components/ProductSearch';
 
-// Sample products data - in a real app, these would come from an API
+// منتجات الشركة مع الصور الحقيقية
 const allProducts = [
-  // Top Max Juice Category
+  // عصائر توب ماكس
   {
     id: 1,
     name: 'برتقال توب ماكس',
     category: 'عصائر توب ماكس',
-    image: 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/lovable-uploads/1ef0aa8f-503c-44df-bd30-419661563b76.png',
     description: 'عصير برتقال طبيعي 100%',
     size: '1 لتر',
     origin: 'السعودية',
@@ -24,7 +23,7 @@ const allProducts = [
     id: 2,
     name: 'مشكل توب ماكس',
     category: 'عصائر توب ماكس',
-    image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/lovable-uploads/74b33e27-c08c-4715-8084-a45f5e9f344c.png',
     description: 'مزيج من الفواكه الطازجة',
     size: '1 لتر',
     origin: 'السعودية',
@@ -34,7 +33,7 @@ const allProducts = [
     id: 3,
     name: 'جوافة توب ماكس',
     category: 'عصائر توب ماكس',
-    image: 'https://images.unsplash.com/photo-1587486937303-32eaa2134b78?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/lovable-uploads/350799d7-8bb5-46f8-9ec8-0d2748d5136b.png',
     description: 'عصير جوافة طبيعي',
     size: '1 لتر',
     origin: 'السعودية',
@@ -44,7 +43,7 @@ const allProducts = [
     id: 4,
     name: 'مانجو توب ماكس',
     category: 'عصائر توب ماكس',
-    image: 'https://images.unsplash.com/photo-1623848162500-4b5732d2f3da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/lovable-uploads/09086fbc-e9fa-4b2d-a80f-823a22c77ee5.png',
     description: 'عصير مانجو طبيعي بدون إضافات',
     size: '1 لتر',
     origin: 'السعودية',
@@ -54,21 +53,21 @@ const allProducts = [
     id: 5,
     name: 'تفاح توب ماكس',
     category: 'عصائر توب ماكس',
-    image: 'https://images.unsplash.com/photo-1576673442511-7e39b6545c87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/lovable-uploads/b503a2c9-a8fd-4938-86dc-27dd18fc6bfc.png',
     description: 'عصير تفاح منعش',
     size: '1 لتر',
     origin: 'السعودية',
     available: true
   },
   
-  // Cadi Regular Juice Category
+  // عصائر كادي عادي
   {
     id: 6,
     name: 'تفاح كادي عادي',
     category: 'عصائر كادي عادي',
-    image: 'https://images.unsplash.com/photo-1576673442511-7e39b6545c87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/lovable-uploads/b503a2c9-a8fd-4938-86dc-27dd18fc6bfc.png',
     description: 'عصير تفاح منعش',
-    size: '330 مل',
+    size: '200 مل',
     origin: 'السعودية',
     available: true
   },
@@ -76,9 +75,9 @@ const allProducts = [
     id: 7,
     name: 'مانجو كادي عادي',
     category: 'عصائر كادي عادي',
-    image: 'https://images.unsplash.com/photo-1623848162500-4b5732d2f3da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/lovable-uploads/09086fbc-e9fa-4b2d-a80f-823a22c77ee5.png',
     description: 'عصير مانجو طبيعي',
-    size: '330 مل',
+    size: '200 مل',
     origin: 'السعودية',
     available: true
   },
@@ -86,21 +85,21 @@ const allProducts = [
     id: 8,
     name: 'جوافة كادي عادي',
     category: 'عصائر كادي عادي',
-    image: 'https://images.unsplash.com/photo-1587486937303-32eaa2134b78?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/lovable-uploads/350799d7-8bb5-46f8-9ec8-0d2748d5136b.png',
     description: 'عصير جوافة منعش',
-    size: '330 مل',
+    size: '200 مل',
     origin: 'السعودية',
     available: false
   },
   
-  // Cadi Nectar Juice Category
+  // عصائر كادي نكتار
   {
     id: 9,
     name: 'برتقال كادي نكتار',
     category: 'عصائر كادي نكتار',
-    image: 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/lovable-uploads/5e45c492-98ef-42da-82fd-8d0f43ec806c.png',
     description: 'نكتار برتقال طبيعي',
-    size: '330 مل',
+    size: '200 مل',
     origin: 'السعودية',
     available: true
   },
@@ -108,9 +107,9 @@ const allProducts = [
     id: 10,
     name: 'مانجو كادي نكتار',
     category: 'عصائر كادي نكتار',
-    image: 'https://images.unsplash.com/photo-1623848162500-4b5732d2f3da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/lovable-uploads/cd430ab9-9d4b-4d95-a901-55e66dd6b3f9.png',
     description: 'نكتار مانجو طبيعي',
-    size: '330 مل',
+    size: '200 مل',
     origin: 'السعودية',
     available: true
   },
@@ -118,9 +117,9 @@ const allProducts = [
     id: 11,
     name: 'مشكل كادي نكتار',
     category: 'عصائر كادي نكتار',
-    image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/lovable-uploads/95232885-94d7-4a53-9b66-0e2c68fe9f48.png',
     description: 'نكتار مشكل فواكه',
-    size: '330 مل',
+    size: '200 مل',
     origin: 'السعودية',
     available: true
   }

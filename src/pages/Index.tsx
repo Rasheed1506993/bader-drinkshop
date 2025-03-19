@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import HeroSection from '../components/HeroSection';
 import ProductList from '../components/ProductList';
@@ -7,13 +6,13 @@ import WhatsappButton from '../components/WhatsappButton';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-// Sample featured products - in a real app, these would come from an API
+// منتجات مميزة مع الصور الحقيقية
 const featuredProducts = [
   {
     id: 1,
     name: 'برتقال توب ماكس',
     category: 'عصائر توب ماكس',
-    image: 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/lovable-uploads/1ef0aa8f-503c-44df-bd30-419661563b76.png',
     description: 'عصير برتقال طبيعي 100%',
     size: '1 لتر',
     origin: 'السعودية',
@@ -23,7 +22,7 @@ const featuredProducts = [
     id: 2,
     name: 'مانجو توب ماكس',
     category: 'عصائر توب ماكس',
-    image: 'https://images.unsplash.com/photo-1623848162500-4b5732d2f3da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/lovable-uploads/09086fbc-e9fa-4b2d-a80f-823a22c77ee5.png',
     description: 'عصير مانجو طبيعي بدون إضافات',
     size: '1 لتر',
     origin: 'السعودية',
@@ -33,9 +32,9 @@ const featuredProducts = [
     id: 3,
     name: 'تفاح كادي عادي',
     category: 'عصائر كادي عادي',
-    image: 'https://images.unsplash.com/photo-1576673442511-7e39b6545c87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/lovable-uploads/b503a2c9-a8fd-4938-86dc-27dd18fc6bfc.png',
     description: 'عصير تفاح منعش',
-    size: '330 مل',
+    size: '200 مل',
     origin: 'السعودية',
     available: true
   },
@@ -43,9 +42,9 @@ const featuredProducts = [
     id: 4,
     name: 'مشكل كادي نكتار',
     category: 'عصائر كادي نكتار',
-    image: 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/lovable-uploads/95232885-94d7-4a53-9b66-0e2c68fe9f48.png',
     description: 'مزيج من الفواكه الطازجة',
-    size: '330 مل',
+    size: '200 مل',
     origin: 'السعودية',
     available: true
   }

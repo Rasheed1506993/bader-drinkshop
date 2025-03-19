@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import WhatsappButton from './WhatsappButton';
+import { Card, CardContent } from '@/components/ui/card';
 
 export interface Product {
   id: number;
@@ -21,11 +22,11 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 card-hover">
-      <div className="relative h-48 bg-badr-gray overflow-hidden">
+    <Card className="overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 card-hover">
+      <div className="relative h-56 bg-badr-gray overflow-hidden">
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="loader"></div>
+            <div className="h-8 w-8 border-4 border-badr-gold border-t-transparent rounded-full animate-spin"></div>
           </div>
         )}
         <img 
@@ -35,7 +36,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           onLoad={() => setIsLoading(false)}
         />
       </div>
-      <div className="p-4 dir-rtl">
+      <CardContent className="p-4 dir-rtl">
         <h3 className="text-lg font-bold text-badr-black mb-1">{product.name}</h3>
         <p className="text-sm text-gray-600 mb-2">{product.description}</p>
         <div className="flex flex-wrap justify-between text-sm mb-3">
@@ -54,8 +55,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
           message={`أود الاستفسار عن ${product.name}`}
           className="w-full text-center justify-center mt-2"
         />
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 
