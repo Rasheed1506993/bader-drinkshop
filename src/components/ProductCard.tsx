@@ -5,7 +5,6 @@ import WhatsappButton from './WhatsappButton';
 import { Card, CardContent } from '@/components/ui/card';
 import { Edit } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
-import { Skeleton } from '@/components/ui/skeleton';
 
 export interface Product {
   id: number;
@@ -24,18 +23,7 @@ interface ProductCardProps {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
   const { isAuthenticated } = useAuth();
-
-  const handleImageLoad = () => {
-    setIsLoading(false);
-  };
-
-  const handleImageError = () => {
-    setIsLoading(false);
-    setHasError(true);
-    console.error(`Failed to load image: ${product.image}`);
-  };
 
   return (
     <Card className="overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 card-hover">
@@ -45,23 +33,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
             <div className="h-8 w-8 border-4 border-badr-gold border-t-transparent rounded-full animate-spin"></div>
           </div>
         )}
-        
-        {hasError ? (
-          <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
-            <p className="text-gray-500 text-center px-4">
-              لا يمكن تحميل الصورة
-            </p>
-          </div>
-        ) : (
-          <img 
-            src={product.image} 
-            alt={product.name} 
-            className={`w-full h-full object-contain transition-opacity duration-300 transform hover:scale-105 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
-            onLoad={handleImageLoad}
-            onError={handleImageError}
-          />
-        )}
-        
+        <img 
+          src={product.image} 
+          alt={product.name} 
+          className={`w-full h-full object-contain transition-opacity duration-300 transform hover:scale-105 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+          onLoad={() => setIsLoading(false)}
+        />
         {isAuthenticated && (
           <Link 
             to={`/products/edit/${product.id}`}
