@@ -1,7 +1,6 @@
-
 import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, Search } from 'lucide-react';
+import { Menu, X, Search, LogIn } from 'lucide-react';
 import ProductSearch from './ProductSearch';
 
 const Header = () => {
@@ -80,6 +79,8 @@ const Header = () => {
           >
             اتصل بنا
           </NavLink>
+
+          {/* زر البحث */}
           <button 
             onClick={() => setShowSearch(!showSearch)}
             className="text-badr-black hover:text-badr-gold transition-colors duration-300"
@@ -87,10 +88,20 @@ const Header = () => {
           >
             <Search size={20} />
           </button>
+
+          {/* زر تسجيل الدخول كأيقونة */}
+          <NavLink 
+            to="/login" 
+            className="text-badr-black hover:text-badr-gold transition-colors duration-300"
+            aria-label="تسجيل الدخول"
+          >
+            <LogIn size={20} />
+          </NavLink>
         </nav>
 
         {/* Mobile Navigation */}
         <div className="flex items-center md:hidden">
+          {/* زر البحث للموبايل */}
           <button 
             onClick={() => setShowSearch(!showSearch)}
             className="mr-4 text-badr-black hover:text-badr-gold transition-colors duration-300"
@@ -98,6 +109,17 @@ const Header = () => {
           >
             <Search size={20} />
           </button>
+
+          {/* زر تسجيل الدخول للموبايل */}
+          <NavLink 
+            to="/login" 
+            className="mr-4 text-badr-black hover:text-badr-gold transition-colors duration-300"
+            aria-label="تسجيل الدخول"
+          >
+            <LogIn size={20} />
+          </NavLink>
+
+          {/* زر القائمة */}
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="text-badr-black hover:text-badr-gold transition-colors duration-300"
