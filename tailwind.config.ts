@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,12 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				"badr-gold": "#F2C94C",
+				"badr-black": "#1A1A1A",
+				"badr-white": "#FFFFFF",
+				"badr-gray": "#F5F5F7",
+				"badr-dark-gold": "#E0B93E"
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +90,39 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				fadeIn: {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' }
+				},
+				slideUp: {
+					'0%': { transform: 'translateY(20px)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' }
+				},
+				float: {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				scaleIn: {
+					'0%': { transform: 'scale(0.9)', opacity: '0' },
+					'100%': { transform: 'scale(1)', opacity: '1' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fadeIn 0.6s ease-in-out forwards',
+				'slide-up': 'slideUp 0.6s ease-out forwards',
+				'float': 'float 6s ease-in-out infinite',
+				'scale-in': 'scaleIn 0.5s ease-out forwards'
+			},
+			fontFamily: {
+				sans: ['Inter', 'sans-serif'],
+				arabic: ['IBM Plex Sans Arabic', 'sans-serif']
+			},
+			backdropFilter: {
+				'none': 'none',
+				'blur': 'blur(20px)'
 			}
 		}
 	},
