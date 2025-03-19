@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import ProductSearch from '../components/ProductSearch';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
 
 // Import product data from separate file
 import { allProducts, categories } from '../data/products';
@@ -16,6 +17,7 @@ const Products = () => {
   const location = useLocation();
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredProducts, setFilteredProducts] = useState(allProducts);
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -66,13 +68,15 @@ const Products = () => {
             <ProductSearch />
           </AnimatedSection>
 
-          <AnimatedSection className="mt-8" animation="slide-up" delay={300}>
-            <Link to="/products/add">
-              <Button className="bg-badr-gold hover:bg-badr-gold/90 text-black">
-                <Plus className="h-5 w-5 ml-2" /> إضافة منتج جديد
-              </Button>
-            </Link>
-          </AnimatedSection>
+          {isAuthenticated && (
+            <AnimatedSection className="mt-8" animation="slide-up" delay={300}>
+              <Link to="/products/add">
+                <Button className="bg-badr-gold hover:bg-badr-gold/90 text-black">
+                  <Plus className="h-5 w-5 ml-2" /> إضافة منتج جديد
+                </Button>
+              </Link>
+            </AnimatedSection>
+          )}
         </div>
       </section>
       

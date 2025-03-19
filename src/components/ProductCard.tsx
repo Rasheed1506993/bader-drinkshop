@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import WhatsappButton from './WhatsappButton';
 import { Card, CardContent } from '@/components/ui/card';
 import { Edit } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
 
 export interface Product {
   id: number;
@@ -22,6 +23,7 @@ interface ProductCardProps {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const [isLoading, setIsLoading] = useState(true);
+  const { isAuthenticated } = useAuth();
 
   return (
     <Card className="overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 card-hover">
@@ -37,13 +39,15 @@ const ProductCard = ({ product }: ProductCardProps) => {
           className={`w-full h-full object-contain transition-opacity duration-300 transform hover:scale-105 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
           onLoad={() => setIsLoading(false)}
         />
-        <Link 
-          to={`/products/edit/${product.id}`}
-          className="absolute top-2 left-2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors"
-          title="تعديل المنتج"
-        >
-          <Edit className="h-4 w-4 text-badr-black" />
-        </Link>
+        {isAuthenticated && (
+          <Link 
+            to={`/products/edit/${product.id}`}
+            className="absolute top-2 left-2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors"
+            title="تعديل المنتج"
+          >
+            <Edit className="h-4 w-4 text-badr-black" />
+          </Link>
+        )}
       </div>
       <CardContent className="p-4 dir-rtl">
         <h3 className="text-lg font-bold text-badr-black mb-1">{product.name}</h3>
