@@ -8,7 +8,7 @@ export const allProducts: Product[] = [
     id: 1,
     name: 'برتقال توب ماكس',
     category: 'عصائر توب ماكس',
-    image: '/lovable-uploads/Yh6mmAl.jpeg',
+    image: '/lovable-uploads/topmax_orange.jpeg',
     description: 'عصير برتقال طبيعي 100%',
     size: '1 لتر',
     origin: 'السعودية',
@@ -38,7 +38,10 @@ export const allProducts: Product[] = [
     id: 4,
     name: 'مانجو توب ماكس',
     category: 'عصائر توب ماكس',
-    image: '/lovable-uploads/Yh6mmAl.jpeg',
+image: '/lovable-uploads/topmax_mangos.jpeg',
+
+
+
     description: 'عصير مانجو طبيعي بدون إضافات',
     size: '1 لتر',
     origin: 'السعودية',
