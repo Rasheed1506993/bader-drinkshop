@@ -1,4 +1,3 @@
-
 import { NavLink } from 'react-router-dom';
 import { Phone, Mail, MapPin } from 'lucide-react';
 
@@ -85,9 +84,23 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Company Rights */}
         <div className="border-t border-gray-800 mt-10 pt-6">
           <p className="text-gray-400 text-sm text-center">
             © {new Date().getFullYear()} شركة البدر الدولية التجارية. جميع الحقوق محفوظة
+          </p>
+        </div>
+
+        {/* Developer Info */}
+        <div className="mt-4">
+          <p className="text-gray-500 text-sm text-center">
+            Developed by Mazen Sharaf AL-Deen | 
+            <a 
+              href="mailto:mazen1221cool@gmail.com" 
+              className="text-badr-gold hover:underline ml-1"
+            >
+              mazen1221cool@gmail.com
+            </a>
           </p>
         </div>
       </div>
