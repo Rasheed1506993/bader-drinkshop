@@ -1,69 +1,125 @@
-# Welcome to your Lovable project
 
-## Project info
+# شركة البدر الدولية التجارية | Al-Badr International Trading Company
 
-**URL**: https://lovable.dev/projects/00ad9072-d4c6-4b89-b194-9cebf430a6ca
+![شعار الشركة](public/lovable-uploads/62655fad-ec14-4d7d-ae44-e375cd8b84d1.png)
 
-## How can I edit this code?
+## نبذة عن الشركة | About the Company
 
-There are several ways of editing your application.
+**العربية:**
+نحن شركة البدر الدولية التجارية، متخصصون في استيراد وتوزيع أجود أنواع العصائر والمشروبات المعبأة. نقدم منتجات ذات جودة عالية تناسب جميع الأذواق والمناسبات، مع التزامنا بتقديم خدمة عملاء ممتازة وتوصيل سريع.
 
-**Use Lovable**
+**English:**
+We are Al-Badr International Trading Company, specializing in importing and distributing the finest juices and packaged beverages. We offer high-quality products suitable for all tastes and occasions, with our commitment to providing excellent customer service and fast delivery.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/00ad9072-d4c6-4b89-b194-9cebf430a6ca) and start prompting.
+## المنتجات | Products
 
-Changes made via Lovable will be committed automatically to this repo.
+### عصائر توب ماكس | Top Max Juices
+- برتقال توب ماكس (1 لتر)
+- مانجو توب ماكس (1 لتر)
+- تفاح توب ماكس (1 لتر)
 
-**Use your preferred IDE**
+### عصائر كادي | Cady Juices
+- تفاح كادي عادي (200 مل)
+- برتقال كادي (200 مل)
+- مشكل كادي نكتار (200 مل)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## المميزات | Features
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+✅ **جودة عالية** - منتجات مستوردة بأعلى معايير الجودة  
+✅ **توصيل سريع** - خدمة توصيل فعالة في جميع أنحاء المملكة  
+✅ **خدمة عملاء ممتازة** - فريق متخصص للرد على استفساراتكم  
+✅ **أسعار تنافسية** - أفضل الأسعار في السوق  
 
-Follow these steps:
+## التقنيات المستخدمة | Technologies Used
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- **React** - مكتبة JavaScript لبناء واجهات المستخدم
+- **TypeScript** - لكتابة كود آمن ومنظم
+- **Tailwind CSS** - لتصميم واجهة مستخدم جميلة ومتجاوبة
+- **Vite** - أداة بناء سريعة للتطوير
+- **shadcn/ui** - مكونات واجهة مستخدم حديثة
+- **React Router** - للتنقل بين الصفحات
+- **Lucide React** - أيقونات جميلة ومتجاوبة
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## التثبيت والتشغيل | Installation & Setup
 
-# Step 3: Install the necessary dependencies.
-npm i
+### المتطلبات | Prerequisites
+- Node.js (الإصدار 16 أو أحدث)
+- npm أو yarn
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### خطوات التثبيت | Installation Steps
+
+```bash
+# استنساخ المشروع
+git clone <repository-url>
+
+# الانتقال إلى مجلد المشروع
+cd bader-drinkshop
+
+# تثبيت التبعيات
+npm install
+
+# تشغيل المشروع في وضع التطوير
 npm run dev
+
+# بناء المشروع للإنتاج
+npm run build
 ```
 
-**Edit a file directly in GitHub**
+## هيكل المشروع | Project Structure
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```
+src/
+├── components/         # المكونات المعاد استخدامها
+│   ├── ui/            # مكونات واجهة المستخدم الأساسية
+│   ├── Header.tsx     # رأس الصفحة
+│   ├── Footer.tsx     # تذييل الصفحة
+│   ├── ProductCard.tsx # بطاقة المنتج
+│   └── ...
+├── pages/             # صفحات التطبيق
+│   ├── Index.tsx      # الصفحة الرئيسية
+│   ├── Products.tsx   # صفحة المنتجات
+│   ├── About.tsx      # صفحة من نحن
+│   └── Contact.tsx    # صفحة اتصل بنا
+├── data/              # بيانات المنتجات
+├── contexts/          # React Contexts
+└── hooks/             # React Hooks المخصصة
+```
 
-**Use GitHub Codespaces**
+## الصفحات | Pages
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- **الرئيسية** - عرض المنتجات المميزة ومعلومات الشركة
+- **المنتجات** - عرض جميع المنتجات مع إمكانية البحث والفلترة
+- **من نحن** - معلومات عن الشركة ورؤيتها
+- **اتصل بنا** - معلومات التواصل ونموذج الاستفسار
 
-## What technologies are used for this project?
+## التواصل | Contact
 
-This project is built with .
+📱 **واتساب:** +966 53 448 8744  
+📧 **البريد الإلكتروني:** info@albadr-trading.com  
+🌐 **الموقع الإلكتروني:** [www.albadr-trading.com](https://www.albadr-trading.com)  
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## الترخيص | License
 
-## How can I deploy this project?
+هذا المشروع محمي بحقوق الطبع والنشر لشركة البدر الدولية التجارية.  
+This project is copyrighted by Al-Badr International Trading Company.
 
-Simply open [Lovable](https://lovable.dev/projects/00ad9072-d4c6-4b89-b194-9cebf430a6ca) and click on Share -> Publish.
+## المساهمة | Contributing
 
-## I want to use a custom domain - is that possible?
+نحن نرحب بالمساهمات! يرجى قراءة دليل المساهمة قبل إرسال طلبات السحب.  
+We welcome contributions! Please read the contributing guide before submitting pull requests.
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+## الدعم | Support
+
+إذا واجهت أي مشاكل أو لديك استفسارات، يرجى التواصل معنا عبر:  
+If you encounter any issues or have questions, please contact us via:
+
+- فتح issue جديد في GitHub
+- التواصل معنا عبر الواتساب
+- إرسال بريد إلكتروني
+
+---
+
+**تم التطوير بواسطة:** فريق التطوير في شركة البدر الدولية التجارية  
+**Developed by:** Al-Badr International Trading Company Development Team
+
+© 2024 شركة البدر الدولية التجارية. جميع الحقوق محفوظة.
