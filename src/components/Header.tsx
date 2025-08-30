@@ -36,7 +36,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <NavLink to="/" className="flex items-center space-x-2 rtl:space-x-reverse">
           <img 
-            src="/lovable-uploads/62655fad-ec14-4d7d-ae44-e375cd8b84d1.png" 
+            src={`${import.meta.env.BASE_URL}lovable-uploads/62655fad-ec14-4d7d-ae44-e375cd8b84d1.png`} 
             alt="شركة البدر الدولية التجارية" 
             className="h-12 md:h-14 w-auto transition-transform hover:scale-105"
           />
