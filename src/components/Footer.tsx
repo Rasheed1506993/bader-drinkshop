@@ -9,7 +9,7 @@ const Footer = () => {
           {/* Logo and Description */}
           <div className="flex flex-col items-center md:items-start">
             <img 
-              src='${import.meta.env.BASE_URL}lovable-uploads/62655fad-ec14-4d7d-ae44-e375cd8b84d1.png'
+              src={`${import.meta.env.BASE_URL}lovable-uploads/62655fad-ec14-4d7d-ae44-e375cd8b84d1.png`} 
               alt="شركة البدر الدولية التجارية" 
               className="h-20 w-auto mb-4"
             />
@@ -94,7 +94,7 @@ const Footer = () => {
         {/* Developer Info */}
         <div className="mt-4">
           <p className="text-gray-500 text-sm text-center">
-            Developed by Mazen Sharaf AL-Deen | 
+            Developed by Mazen Sharaf AL-Deen |{' '}
             <a 
               href="mailto:mazen1221cool@gmail.com" 
               className="text-badr-gold hover:underline ml-1"
