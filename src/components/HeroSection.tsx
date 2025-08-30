@@ -17,7 +17,7 @@ const HeroSection = () => {
       <div className="container mx-auto px-6 py-20 relative z-10 flex flex-col items-center justify-center text-center">
         <AnimatedSection animation="fade-in">
           <img 
-            src="/lovable-uploads/62655fad-ec14-4d7d-ae44-e375cd8b84d1.png" 
+            src={`${import.meta.env.BASE_URL}lovable-uploads/62655fad-ec14-4d7d-ae44-e375cd8b84d1.png`} 
             alt="شركة البدر الدولية التجارية" 
             className="h-28 md:h-32 w-auto mb-6 animate-float"
           />
